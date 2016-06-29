@@ -1,5 +1,7 @@
 # Nodejs REST API for IoT Timeseries OVH PaaS
 
+:whale: Available on DockerHub (https://hub.docker.com/r/flotix/api-rest-ovh-iot/)
+
 ## Env variables
 
 - TOKEN_ID
