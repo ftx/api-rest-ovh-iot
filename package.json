@@ -1,0 +1,11 @@
+{
+  "name": "REST-API-OpenTSDB",
+  "private": true,
+  "version": "0.0.1",
+  "description": "REST API for OpenTSDB",
+  "author": "Florian Mauduit <flotix@linux.com>",
+  "dependencies": {
+    "request": "latest",
+    "extend":  "latest"
+  }
+}
