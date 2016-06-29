@@ -8,7 +8,7 @@
 ### Use
 
 #### Example
-docker run -p 81:81 -e TOKEN_ID="foo" -e TOKEN_KEY="bar" flotix/nodeiotovh
+docker run -p 81:81 -e TOKEN_ID="foo" -e TOKEN_KEY="bar" flotix/api-rest-ovh-iot
 
 #### Usage
 
