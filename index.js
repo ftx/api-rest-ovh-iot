@@ -16,8 +16,6 @@ var server = http.createServer(function(req, res) {
     else if (page == '/send') {
 	var params = querystring.parse(url.parse(req.url).query);
 
-console.log(TOKEN_ID);
-console.log(TOKEN_KEY);
 
 var measurement =	params['measurement'];
 var value	=	Number(params['value']);
