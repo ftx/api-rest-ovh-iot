@@ -10,6 +10,7 @@ COPY . /src
 WORKDIR /src
 RUN npm install
 
+
 EXPOSE  81
 
-CMD ["node", "index.js", "$TOKEN_ID", "$TOKEN_KEY"]
+CMD ["node", "index.js", "echo ${TOKEN_ID}", "echo ${TOKEN_KEY}"]

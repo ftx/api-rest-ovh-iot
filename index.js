@@ -3,8 +3,8 @@ var url = require('url');
 var querystring = require('querystring');
 var request = require("request");
 
-var TOKEN_ID = process.argv[2];
-var TOKEN_KEY = process.argv[3];
+var TOKEN_ID = process.env.TOKEN_ID;
+var TOKEN_KEY = process.env.TOKEN_KEY;
 
 var server = http.createServer(function(req, res) {
     var page = url.parse(req.url).pathname;
@@ -15,6 +15,9 @@ var server = http.createServer(function(req, res) {
     }
     else if (page == '/send') {
 	var params = querystring.parse(url.parse(req.url).query);
+
+console.log(TOKEN_ID);
+console.log(TOKEN_KEY);
 
 var measurement =	params['measurement'];
 var value	=	Number(params['value']);
