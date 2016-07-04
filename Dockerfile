@@ -13,4 +13,4 @@ RUN npm install
 
 EXPOSE  81
 
-CMD ["node", "index.js", "echo ${TOKEN_ID}", "echo ${TOKEN_KEY}"]
+CMD ["node", "index.js"]
