@@ -1,5 +1,6 @@
 var http = require('http');
 var request = require('request');
+var util = require('util');
 
 var s = http.createServer(function (req, res) {
   var raw = '';
@@ -10,7 +11,8 @@ var s = http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end(raw);  
     var info = JSON.parse(raw);
-    var temp = info.temperature
+    var temp = util.inspect(info.payload[0].data.temperature, { showHidden: true, depth: null });
+
 
 var options = {
     method: 'GET',

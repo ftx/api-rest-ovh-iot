@@ -5,6 +5,7 @@
   "description": "REST API for OpenTSDB",
   "author": "Florian Mauduit <flotix@linux.com>",
   "dependencies": {
-	"request": "latest"
+	"request": "latest",
+	"util": "latest"
   }
 }
