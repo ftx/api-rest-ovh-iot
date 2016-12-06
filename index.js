@@ -29,7 +29,7 @@ var server = http.createServer(function(req, res) {
     res.statusCode = 500
     res.end(err.message)
   })
-	
+    console.log(res);	
     }
     else if (page == '/send') {
 	var params = querystring.parse(url.parse(req.url).query);
