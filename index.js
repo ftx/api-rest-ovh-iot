@@ -3,6 +3,11 @@ var url = require('url');
 var querystring = require('querystring');
 var request = require("request");
 
+// Body Parser
+//
+var getRawBody = require('raw-body')
+
+
 var TOKEN_ID = process.env.TOKEN_ID;
 var TOKEN_KEY = process.env.TOKEN_KEY;
 
@@ -12,6 +17,19 @@ var server = http.createServer(function(req, res) {
     res.writeHead(200, {"Content-Type": "text/plain"});
     if (page == '/') {
         res.write('REST API NodeJS IOT OVH - flotix@linux.com');
+    }
+    else if (page == '/lora') {
+
+	getRawBody(req)
+  .then(function (buf) {
+    res.statusCode = 200
+    res.end(buf.length + ' bytes submitted')
+  })
+  .catch(function (err) {
+    res.statusCode = 500
+    res.end(err.message)
+  })
+	
     }
     else if (page == '/send') {
 	var params = querystring.parse(url.parse(req.url).query);
