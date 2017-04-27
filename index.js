@@ -18,9 +18,9 @@ app.post('/', function(req, res) {
 
 
 app.post('/send', function(req, res) {
-    var temp = req.body.slot_temp;
-    var hum = req.body.slot_hum;
-    var signal = req.body.signal;
+    var temp = Number(req.body.slot_temp);
+    var hum = Number(req.body.slot_hum);
+    var signal = Number(req.body.signal);
 
     res.send(signal + ' ' + temp + ' ' + hum);
     console.log(signal + ' ' + temp + ' ' + hum);
