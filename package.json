@@ -6,6 +6,8 @@
   "author": "Florian Mauduit <flotix@linux.com>",
   "dependencies": {
     "body-parser": "latest",
-    "express": "latest"
+    "express": "latest",
+    "request": "latest",
+    "extend": "latest"
   }
 }
