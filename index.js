@@ -1,57 +1,21 @@
-var http = require('http');
-var url = require('url');
-var querystring = require('querystring');
-var request = require("request");
-
-var TOKEN_ID = process.env.TOKEN_ID;
-var TOKEN_KEY = process.env.TOKEN_KEY;
-
-var server = http.createServer(function(req, res) {
-    var page = url.parse(req.url).pathname;
-    console.log(page);
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    if (page == '/') {
-        res.write('REST API NodeJS IOT OVH - flotix@linux.com');
-    }
-    else if (page == '/send') {
-	var params = querystring.parse(url.parse(req.url).query);
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+var port = process.env.PORT || 96;
 
 
-var measurement =	params['measurement'];
-var value	=	Number(params['value']);
-var location	=	params['location'];
+// routes will go here
+app.post('/send', function(req, res) {
+    var temp = req.body.slot_temp;
+    var hum = req.body.slot_hum;
+    var signal = req.body.signal;
 
-var data = [{
-			metric:measurement,
-			value:value,
-			tags:{
-				source:"RestNodeJS-API",
-				region:location
-			}
-		}];
-// Send data
-request({
-	uri: "https://opentsdb-gra1.tsaas.ovh.com/api/put",
-	auth: {
-		user: TOKEN_ID,
-		pass: TOKEN_KEY,
-		sendImmediately: true
-	},
-	method: "POST",
-	json: data
-}, function (error, response, body) {
-	if (error) {
-		console.log(error);
-	} else if (response.statusCode >= 400) {
-		console.log(body);
-		console.log(response.statusMessage);
-	} else {
-		console.log("Success!" + location + " / " + measurement + " / " +value +" ");
-	}
+    res.send(signal + ' ' + temp + ' ' + hum);
 });
 
-	res.write('Success');
-    }
-    res.end();
-});
-server.listen(81);
+
+// start the server
+app.listen(port);
+console.log('Server started! port:' + port);
