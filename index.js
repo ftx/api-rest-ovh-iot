@@ -13,6 +13,7 @@ app.post('/send', function(req, res) {
     var signal = req.body.signal;
 
     res.send(signal + ' ' + temp + ' ' + hum);
+    console.log(signal + ' ' + temp + ' ' + hum);
 });
 
 
